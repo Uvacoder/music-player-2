@@ -1,0 +1,175 @@
+@include font-face(BasierCircle-Regular, "/assets/fonts/basier/BasierCircle-Regular", normal, normal, ttf);
+@include font-face(BasierCircle-Bold, "/assets/fonts/basier/BasierCircle-Bold", bold, bold, ttf);
+@include font-face(BasierCircle-Medium, "/assets/fonts/basier/BasierCircle-Medium", 500, normal, ttf);
+
+// SET THE BASE HTML REM, MAKING 1REM=10PX
+html {
+  font-size: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+// body {
+//   // background-color: #090602;
+// }
+
+//Fonts
+.basier-circle-regular {
+  @include font($white, "BasierCircle-Regular", 2rem, normal, normal);
+}
+.basier-circle-bold {
+  @include font($white, "BasierCircle-Bold", 2rem, bold, normal);
+}
+
+.f-s-14 {
+  font-size: 1.4rem;
+}
+.f-s-16 {
+  font-size: 1.6rem;
+}
+.f-s-18 {
+  font-size: 1.8rem;
+}
+.f-s-20 {
+  font-size: 2rem;
+}
+.f-s-32 {
+  font-size: 3.2rem;
+}
+.lh-24 {
+  line-height: 24px;
+}
+.lh-36 {
+  line-height: 36px;
+}
+.op-04 {
+  opacity: 0.4;
+}
+.op-06 {
+  opacity: 0.6;
+}
+
+.home-section {
+  padding: 3.2rem;
+  background: linear-gradient(#293f50, #648880);
+  .category-section {
+    text-align: left;
+    .logo {
+      margin-bottom: 2.8rem;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        cursor: pointer;
+        padding-bottom: 2.4rem;
+      }
+    }
+    .profile-pic {
+      position: absolute;
+      bottom: 0;
+      cursor: pointer;
+    }
+  }
+  .tracks-section {
+    h2 {
+      text-align: left;
+      padding: 0 2rem;
+    }
+    .searchbox {
+      width: 90%;
+      margin: 2.4rem 2rem;
+      background-color: $white-08;
+      border-radius: 8px;
+      border: 0;
+      outline: none;
+      padding: 1rem 1.6rem;
+      @include font($white, "BasierCircle-Regular", 1.8rem, normal, normal);
+      opacity: 0.6;
+    }
+    .track-wrapper {
+      text-align: left;
+      .track {
+        cursor: pointer;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &.active {
+          background-color: $white-08;
+          border-radius: 8px;
+        }
+        .track-image {
+          border-radius: 50%;
+          margin-right: 1.6rem;
+          width: 4.8rem;
+          height: 4.8rem;
+        }
+        .name-wrapper {
+          width: 100%;
+        }
+        h6 {
+          text-align: right;
+        }
+      }
+    }
+  }
+  .player-section {
+    text-align: left;
+    padding: 0 5rem;
+    h2 {
+      padding-top: 6rem;
+      padding-bottom: 0.8rem;
+    }
+    h5 {
+      padding-bottom: 4rem;
+    }
+    .player-image {
+      border-radius: 8px;
+      width: 100%;
+    }
+    .custom-audio-player {
+      background-color: transparent;
+      padding: 2.4rem 0;
+      box-shadow: none;
+      .rhap_progress-section {
+        .rhap_progress-container {
+          margin: 0;
+        }
+        .rhap_time {
+          display: none;
+        }
+        .rhap_progress-bar {
+          height: 6px;
+          background-color: #383634;
+          .rhap_progress-indicator {
+            display: none;
+          }
+          .rhap_progress-filled {
+            background-color: $white;
+          }
+        }
+      }
+      .rhap_controls-section {
+        margin-top: 4rem;
+        .rhap_play-pause-button {
+          margin: 0 3.6rem;
+        }
+      }
+    }
+  }
+}
