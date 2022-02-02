@@ -2,7 +2,7 @@ import './App.css';
 // import Home from './app/Home/Home';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import NewHome from './app/Home/NewHome';
+import MusicPlayer from './app/Home/MusicPlayer';
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
     graphqlErrors.map(({ message, location, path }) => {
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <ApolloProvider client={client}>
-        <NewHome />
+        <MusicPlayer />
       </ApolloProvider>
     </div>
   );

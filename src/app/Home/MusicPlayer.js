@@ -11,16 +11,16 @@ import Fade from 'react-reveal/Fade';
 import moment from 'moment';
 import profile from '../../assets/images/Profile.svg';
 
-function NewHome() {
-  const { data: dataP, /* loading: loadingP, error: errorP */ } = useQuery(GET_PLAYLIST);
+function MusicPlayer() {
+  const { data: dataPlaylist, /* loading: loadingP, error: errorP */ } = useQuery(GET_PLAYLIST);
   const [selectedTab, setTab] = useState("");
   useEffect(() => {
-    if (dataP) {
+    if (dataPlaylist) {
 
-      setTab(dataP.getPlaylists[0])
+      setTab(dataPlaylist.getPlaylists[0])
     }
-  }, [dataP]);
-  const { data: dataT,/*  loading: loadingT, error: errorT */ } = useQuery(GET_TRACKS, {
+  }, [dataPlaylist]);
+  const { data: dataTrackList,/*  loading: loadingT, error: errorT */ } = useQuery(GET_TRACKS, {
     variables: {
       playlistId: selectedTab && selectedTab.id
     }
@@ -28,24 +28,24 @@ function NewHome() {
   const [selectedTrack, setTrack] = useState("");
   const [trackList, getTrack] = useState([]);
   useEffect(() => {
-    if (dataT) {
-      getTrack(dataT.getSongs);
+    if (dataTrackList) {
+      getTrack(dataTrackList.getSongs);
     }
 
-  }, [dataT]);
+  }, [dataTrackList]);
   const [searchValue, setSearch] = useState("");
 
   const handleSearch = (value) => {
     setSearch(value)
     debounce(value, selectedTab);
   }
-  const [searchQuery, { data: dataS, /* loading: loadingS, error: errorS */ }] = useLazyQuery(GET_TRACK_BY_NAME)
+  const [searchQuery, { data: dataSearchTrack, /* loading: loadingS, error: errorS */ }] = useLazyQuery(GET_TRACK_BY_NAME)
   useEffect(() => {
-    if (dataS) {
-      getTrack(dataS.getSongs);
+    if (dataSearchTrack) {
+      getTrack(dataSearchTrack.getSongs);
     }
 
-  }, [dataS]);
+  }, [dataSearchTrack]);
 
   const debounce = useCallback(
     _.debounce((_searchVal, selectedTab) => {
@@ -75,8 +75,8 @@ function NewHome() {
         <div className='category-section'>
           <Image src={spotify} className='logo' />
           <ul>
-            {dataP &&
-              dataP.getPlaylists.map((item, index) => {
+            {dataPlaylist &&
+              dataPlaylist.getPlaylists.map((item, index) => {
                 return (
                   <li key={index} onClick={() => setTab(item)} className={`basier-circle-regular ${selectedTab && selectedTab.id === item.id ? "" : "op-04"}`}>{item.title}</li>
                 )
@@ -141,4 +141,4 @@ function NewHome() {
   </div>;
 }
 
-export default NewHome;
+export default MusicPlayer;
